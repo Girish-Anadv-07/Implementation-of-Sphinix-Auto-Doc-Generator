@@ -1,0 +1,624 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="tools package" href="tools.html" /><link rel="prev" title="data package" href="data.html" />
+
+    <meta name="generator" content="sphinx-5.3.0, furo 2022.09.29"/>
+        <title>scripts package - Gunfolds Package 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=d81277517bee4d6b0349d71bb2661d4890b5617c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Gunfolds Package 1.0.0 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  
+  <span class="sidebar-brand-text">Gunfolds Package 1.0.0 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="modules.html">gunfolds</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="data.html">data package</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">scripts package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html">tools package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version.html">version module</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="scripts-package">
+<h1>scripts package<a class="headerlink" href="#scripts-package" title="Permalink to this heading">#</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="module-scripts.bf_Gu_size">
+<span id="scripts-bf-gu-size-module"></span><h2>scripts.bf_Gu_size module<a class="headerlink" href="#module-scripts.bf_Gu_size" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.bf_Gu_size.make_rect">
+<span class="sig-prename descclassname"><span class="pre">scripts.bf_Gu_size.</span></span><span class="sig-name descname"><span class="pre">make_rect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/bf_Gu_size.html#make_rect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.bf_Gu_size.make_rect" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.bf_Gu_size.wrapper_c">
+<span class="sig-prename descclassname"><span class="pre">scripts.bf_Gu_size.</span></span><span class="sig-name descname"><span class="pre">wrapper_c</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fold</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/bf_Gu_size.html#wrapper_c"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.bf_Gu_size.wrapper_c" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.bf_Gu_size.wrapper_l">
+<span class="sig-prename descclassname"><span class="pre">scripts.bf_Gu_size.</span></span><span class="sig-name descname"><span class="pre">wrapper_l</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fold</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/bf_Gu_size.html#wrapper_l"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.bf_Gu_size.wrapper_l" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.bf_Gu_size.wrapper_list">
+<span class="sig-prename descclassname"><span class="pre">scripts.bf_Gu_size.</span></span><span class="sig-name descname"><span class="pre">wrapper_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fold</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/bf_Gu_size.html#wrapper_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.bf_Gu_size.wrapper_list" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.bf_Gu_size.wrapper_non_eliminate">
+<span class="sig-prename descclassname"><span class="pre">scripts.bf_Gu_size.</span></span><span class="sig-name descname"><span class="pre">wrapper_non_eliminate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fold</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/bf_Gu_size.html#wrapper_non_eliminate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.bf_Gu_size.wrapper_non_eliminate" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.bf_Gu_size.wrapper_u">
+<span class="sig-prename descclassname"><span class="pre">scripts.bf_Gu_size.</span></span><span class="sig-name descname"><span class="pre">wrapper_u</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steps</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/bf_Gu_size.html#wrapper_u"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.bf_Gu_size.wrapper_u" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.bf_Gu_size.wrapper_unique">
+<span class="sig-prename descclassname"><span class="pre">scripts.bf_Gu_size.</span></span><span class="sig-name descname"><span class="pre">wrapper_unique</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fold</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/bf_Gu_size.html#wrapper_unique"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.bf_Gu_size.wrapper_unique" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="scripts-c-rasl-module">
+<h2>scripts.c_RASL module<a class="headerlink" href="#scripts-c-rasl-module" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="scripts-d-rasl-module">
+<h2>scripts.d_rasl module<a class="headerlink" href="#scripts-d-rasl-module" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="scripts-d-rasl-scc-module">
+<h2>scripts.d_rasl_scc module<a class="headerlink" href="#scripts-d-rasl-scc-module" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="scripts-dataset-concat-module">
+<h2>scripts.dataset_concat module<a class="headerlink" href="#scripts-dataset-concat-module" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="module-scripts.dbnplot">
+<span id="scripts-dbnplot-module"></span><h2>scripts.dbnplot module<a class="headerlink" href="#module-scripts.dbnplot" title="Permalink to this heading">#</a></h2>
+<p>This is a use-case of the tools in the tools directory. The
+example defines a graph and shows how to generate a figure that
+shows the graph at different undersampling rates. Running the file
+in python (python dbnplot.py) generates a figure in figures
+folder: shipfig.pdf</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.dbnplot.listplot">
+<span class="sig-prename descclassname"><span class="pre">scripts.dbnplot.</span></span><span class="sig-name descname"><span class="pre">listplot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'JJ'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stl</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/dbnplot.html#listplot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.dbnplot.listplot" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.dbnplot.random">
+<span class="sig-prename descclassname"><span class="pre">scripts.dbnplot.</span></span><span class="sig-name descname"><span class="pre">random</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">x</span> <span class="pre">in</span> <span class="pre">the</span> <span class="pre">interval</span> <span class="pre">[0,</span> <span class="pre">1).</span></span></span><a class="headerlink" href="#scripts.dbnplot.random" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-scripts.g2g1runner">
+<span id="scripts-g2g1runner-module"></span><h2>scripts.g2g1runner module<a class="headerlink" href="#module-scripts.g2g1runner" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.g2g1runner.fan_wrapper">
+<span class="sig-prename descclassname"><span class="pre">scripts.g2g1runner.</span></span><span class="sig-name descname"><span class="pre">fan_wrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/g2g1runner.html#fan_wrapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.g2g1runner.fan_wrapper" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.g2g1runner.killall">
+<span class="sig-prename descclassname"><span class="pre">scripts.g2g1runner.</span></span><span class="sig-name descname"><span class="pre">killall</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/g2g1runner.html#killall"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.g2g1runner.killall" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.g2g1runner.wrapper_rate_agnostic">
+<span class="sig-prename descclassname"><span class="pre">scripts.g2g1runner.</span></span><span class="sig-name descname"><span class="pre">wrapper_rate_agnostic</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/g2g1runner.html#wrapper_rate_agnostic"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.g2g1runner.wrapper_rate_agnostic" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="scripts-msl-rasl-module">
+<h2>scripts.msl_rasl module<a class="headerlink" href="#scripts-msl-rasl-module" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="module-scripts.plot">
+<span id="scripts-plot-module"></span><h2>scripts.plot module<a class="headerlink" href="#module-scripts.plot" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.plot.getalltimes">
+<span class="sig-prename descclassname"><span class="pre">scripts.plot.</span></span><span class="sig-name descname"><span class="pre">getalltimes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">densities</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[0.15,</span> <span class="pre">0.2,</span> <span class="pre">0.25,</span> <span class="pre">0.3,</span> <span class="pre">0.35]</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/plot.html#getalltimes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.plot.getalltimes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.plot.gettimes">
+<span class="sig-prename descclassname"><span class="pre">scripts.plot.</span></span><span class="sig-name descname"><span class="pre">gettimes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/plot.html#gettimes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.plot.gettimes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.plot.timesfromfile">
+<span class="sig-prename descclassname"><span class="pre">scripts.plot.</span></span><span class="sig-name descname"><span class="pre">timesfromfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/plot.html#timesfromfile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.plot.timesfromfile" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="scripts-plot-scc-bbehavior-module">
+<h2>scripts.plot_SCC_bbehavior module<a class="headerlink" href="#scripts-plot-scc-bbehavior-module" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="module-scripts.plot_many">
+<span id="scripts-plot-many-module"></span><h2>scripts.plot_many module<a class="headerlink" href="#module-scripts.plot_many" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.plot_many.gettimes">
+<span class="sig-prename descclassname"><span class="pre">scripts.plot_many.</span></span><span class="sig-name descname"><span class="pre">gettimes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/plot_many.html#gettimes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.plot_many.gettimes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="scripts-plot-seaborn-module">
+<h2>scripts.plot_seaborn module<a class="headerlink" href="#scripts-plot-seaborn-module" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="scripts-plot-time-behaviour-module">
+<h2>scripts.plot_time_behaviour module<a class="headerlink" href="#scripts-plot-time-behaviour-module" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="scripts-py-rasl-module">
+<h2>scripts.py_RASL module<a class="headerlink" href="#scripts-py-rasl-module" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="scripts-rate-agnostic-runner-module">
+<h2>scripts.rate_agnostic_runner module<a class="headerlink" href="#scripts-rate-agnostic-runner-module" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="scripts-sat4u-msl-runner-module">
+<h2>scripts.sat4u_msl_runner module<a class="headerlink" href="#scripts-sat4u-msl-runner-module" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="scripts-sat4u-rasl-runner-module">
+<h2>scripts.sat4u_rasl_runner module<a class="headerlink" href="#scripts-sat4u-rasl-runner-module" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="scripts-save-graphs-module">
+<h2>scripts.save_graphs module<a class="headerlink" href="#scripts-save-graphs-module" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="scripts-save-scc-graphs-module">
+<h2>scripts.save_scc_graphs module<a class="headerlink" href="#scripts-save-scc-graphs-module" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="module-scripts.simplot">
+<span id="scripts-simplot-module"></span><h2>scripts.simplot module<a class="headerlink" href="#module-scripts.simplot" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.simplot.estCOE">
+<span class="sig-prename descclassname"><span class="pre">scripts.simplot.</span></span><span class="sig-name descname"><span class="pre">estCOE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/simplot.html#estCOE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.simplot.estCOE" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.simplot.estOE">
+<span class="sig-prename descclassname"><span class="pre">scripts.simplot.</span></span><span class="sig-name descname"><span class="pre">estOE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/simplot.html#estOE"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.simplot.estOE" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-scripts.stackedbars">
+<span id="scripts-stackedbars-module"></span><h2>scripts.stackedbars module<a class="headerlink" href="#module-scripts.stackedbars" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.stackedbars.get_counts">
+<span class="sig-prename descclassname"><span class="pre">scripts.stackedbars.</span></span><span class="sig-name descname"><span class="pre">get_counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/stackedbars.html#get_counts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.stackedbars.get_counts" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-scripts.stackedbars_many">
+<span id="scripts-stackedbars-many-module"></span><h2>scripts.stackedbars_many module<a class="headerlink" href="#module-scripts.stackedbars_many" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.stackedbars_many.gettimes">
+<span class="sig-prename descclassname"><span class="pre">scripts.stackedbars_many.</span></span><span class="sig-name descname"><span class="pre">gettimes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/stackedbars_many.html#gettimes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.stackedbars_many.gettimes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-scripts.stackedbars_many_10">
+<span id="scripts-stackedbars-many-10-module"></span><h2>scripts.stackedbars_many_10 module<a class="headerlink" href="#module-scripts.stackedbars_many_10" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.stackedbars_many_10.get_counts">
+<span class="sig-prename descclassname"><span class="pre">scripts.stackedbars_many_10.</span></span><span class="sig-name descname"><span class="pre">get_counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/stackedbars_many_10.html#get_counts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.stackedbars_many_10.get_counts" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.stackedbars_many_10.gettimes">
+<span class="sig-prename descclassname"><span class="pre">scripts.stackedbars_many_10.</span></span><span class="sig-name descname"><span class="pre">gettimes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/stackedbars_many_10.html#gettimes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.stackedbars_many_10.gettimes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-scripts.stackedbars_many_7">
+<span id="scripts-stackedbars-many-7-module"></span><h2>scripts.stackedbars_many_7 module<a class="headerlink" href="#module-scripts.stackedbars_many_7" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.stackedbars_many_7.get_counts">
+<span class="sig-prename descclassname"><span class="pre">scripts.stackedbars_many_7.</span></span><span class="sig-name descname"><span class="pre">get_counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/stackedbars_many_7.html#get_counts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.stackedbars_many_7.get_counts" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.stackedbars_many_7.gettimes">
+<span class="sig-prename descclassname"><span class="pre">scripts.stackedbars_many_7.</span></span><span class="sig-name descname"><span class="pre">gettimes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/stackedbars_many_7.html#gettimes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.stackedbars_many_7.gettimes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-scripts.stackedbars_many_8">
+<span id="scripts-stackedbars-many-8-module"></span><h2>scripts.stackedbars_many_8 module<a class="headerlink" href="#module-scripts.stackedbars_many_8" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.stackedbars_many_8.get_counts">
+<span class="sig-prename descclassname"><span class="pre">scripts.stackedbars_many_8.</span></span><span class="sig-name descname"><span class="pre">get_counts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/stackedbars_many_8.html#get_counts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.stackedbars_many_8.get_counts" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.stackedbars_many_8.gettimes">
+<span class="sig-prename descclassname"><span class="pre">scripts.stackedbars_many_8.</span></span><span class="sig-name descname"><span class="pre">gettimes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/stackedbars_many_8.html#gettimes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.stackedbars_many_8.gettimes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-scripts.svar">
+<span id="scripts-svar-module"></span><h2>scripts.svar module<a class="headerlink" href="#module-scripts.svar" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.svar.find_nearest_reachable">
+<span class="sig-prename descclassname"><span class="pre">scripts.svar.</span></span><span class="sig-name descname"><span class="pre">find_nearest_reachable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_depth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/svar.html#find_nearest_reachable"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.svar.find_nearest_reachable" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.svar.hamming_neighbors">
+<span class="sig-prename descclassname"><span class="pre">scripts.svar.</span></span><span class="sig-name descname"><span class="pre">hamming_neighbors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">step</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/svar.html#hamming_neighbors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.svar.hamming_neighbors" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.svar.timeout">
+<span class="sig-prename descclassname"><span class="pre">scripts.svar.</span></span><span class="sig-name descname"><span class="pre">timeout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kwargs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout_duration</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/svar.html#timeout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.svar.timeout" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.svar.wrapgen">
+<span class="sig-prename descclassname"><span class="pre">scripts.svar.</span></span><span class="sig-name descname"><span class="pre">wrapgen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dens</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/svar.html#wrapgen"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.svar.wrapgen" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scripts.svar.wrapper">
+<span class="sig-prename descclassname"><span class="pre">scripts.svar.</span></span><span class="sig-name descname"><span class="pre">wrapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fold</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dens</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/svar.html#wrapper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.svar.wrapper" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="scripts-test-graph-shape-module">
+<h2>scripts.test_graph_shape module<a class="headerlink" href="#scripts-test-graph-shape-module" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="scripts-test-graph-shapes-module">
+<h2>scripts.test_graph_shapes module<a class="headerlink" href="#scripts-test-graph-shapes-module" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="scripts-validation-module">
+<h2>scripts.validation module<a class="headerlink" href="#scripts-validation-module" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="scripts-violin-plot-module">
+<h2>scripts.violin_plot module<a class="headerlink" href="#scripts-violin-plot-module" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="module-scripts">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-scripts" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="tools.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">tools package</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="data.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">data package</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022, Girish
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            <div class="icons">
+              
+            </div>
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">scripts package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-scripts.bf_Gu_size">scripts.bf_Gu_size module</a><ul>
+<li><a class="reference internal" href="#scripts.bf_Gu_size.make_rect"><code class="docutils literal notranslate"><span class="pre">make_rect()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.bf_Gu_size.wrapper_c"><code class="docutils literal notranslate"><span class="pre">wrapper_c()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.bf_Gu_size.wrapper_l"><code class="docutils literal notranslate"><span class="pre">wrapper_l()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.bf_Gu_size.wrapper_list"><code class="docutils literal notranslate"><span class="pre">wrapper_list()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.bf_Gu_size.wrapper_non_eliminate"><code class="docutils literal notranslate"><span class="pre">wrapper_non_eliminate()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.bf_Gu_size.wrapper_u"><code class="docutils literal notranslate"><span class="pre">wrapper_u()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.bf_Gu_size.wrapper_unique"><code class="docutils literal notranslate"><span class="pre">wrapper_unique()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scripts-c-rasl-module">scripts.c_RASL module</a></li>
+<li><a class="reference internal" href="#scripts-d-rasl-module">scripts.d_rasl module</a></li>
+<li><a class="reference internal" href="#scripts-d-rasl-scc-module">scripts.d_rasl_scc module</a></li>
+<li><a class="reference internal" href="#scripts-dataset-concat-module">scripts.dataset_concat module</a></li>
+<li><a class="reference internal" href="#module-scripts.dbnplot">scripts.dbnplot module</a><ul>
+<li><a class="reference internal" href="#scripts.dbnplot.listplot"><code class="docutils literal notranslate"><span class="pre">listplot()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.dbnplot.random"><code class="docutils literal notranslate"><span class="pre">random()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-scripts.g2g1runner">scripts.g2g1runner module</a><ul>
+<li><a class="reference internal" href="#scripts.g2g1runner.fan_wrapper"><code class="docutils literal notranslate"><span class="pre">fan_wrapper()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.g2g1runner.killall"><code class="docutils literal notranslate"><span class="pre">killall()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.g2g1runner.wrapper_rate_agnostic"><code class="docutils literal notranslate"><span class="pre">wrapper_rate_agnostic()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scripts-msl-rasl-module">scripts.msl_rasl module</a></li>
+<li><a class="reference internal" href="#module-scripts.plot">scripts.plot module</a><ul>
+<li><a class="reference internal" href="#scripts.plot.getalltimes"><code class="docutils literal notranslate"><span class="pre">getalltimes()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.plot.gettimes"><code class="docutils literal notranslate"><span class="pre">gettimes()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.plot.timesfromfile"><code class="docutils literal notranslate"><span class="pre">timesfromfile()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scripts-plot-scc-bbehavior-module">scripts.plot_SCC_bbehavior module</a></li>
+<li><a class="reference internal" href="#module-scripts.plot_many">scripts.plot_many module</a><ul>
+<li><a class="reference internal" href="#scripts.plot_many.gettimes"><code class="docutils literal notranslate"><span class="pre">gettimes()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scripts-plot-seaborn-module">scripts.plot_seaborn module</a></li>
+<li><a class="reference internal" href="#scripts-plot-time-behaviour-module">scripts.plot_time_behaviour module</a></li>
+<li><a class="reference internal" href="#scripts-py-rasl-module">scripts.py_RASL module</a></li>
+<li><a class="reference internal" href="#scripts-rate-agnostic-runner-module">scripts.rate_agnostic_runner module</a></li>
+<li><a class="reference internal" href="#scripts-sat4u-msl-runner-module">scripts.sat4u_msl_runner module</a></li>
+<li><a class="reference internal" href="#scripts-sat4u-rasl-runner-module">scripts.sat4u_rasl_runner module</a></li>
+<li><a class="reference internal" href="#scripts-save-graphs-module">scripts.save_graphs module</a></li>
+<li><a class="reference internal" href="#scripts-save-scc-graphs-module">scripts.save_scc_graphs module</a></li>
+<li><a class="reference internal" href="#module-scripts.simplot">scripts.simplot module</a><ul>
+<li><a class="reference internal" href="#scripts.simplot.estCOE"><code class="docutils literal notranslate"><span class="pre">estCOE()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.simplot.estOE"><code class="docutils literal notranslate"><span class="pre">estOE()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-scripts.stackedbars">scripts.stackedbars module</a><ul>
+<li><a class="reference internal" href="#scripts.stackedbars.get_counts"><code class="docutils literal notranslate"><span class="pre">get_counts()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-scripts.stackedbars_many">scripts.stackedbars_many module</a><ul>
+<li><a class="reference internal" href="#scripts.stackedbars_many.gettimes"><code class="docutils literal notranslate"><span class="pre">gettimes()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-scripts.stackedbars_many_10">scripts.stackedbars_many_10 module</a><ul>
+<li><a class="reference internal" href="#scripts.stackedbars_many_10.get_counts"><code class="docutils literal notranslate"><span class="pre">get_counts()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.stackedbars_many_10.gettimes"><code class="docutils literal notranslate"><span class="pre">gettimes()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-scripts.stackedbars_many_7">scripts.stackedbars_many_7 module</a><ul>
+<li><a class="reference internal" href="#scripts.stackedbars_many_7.get_counts"><code class="docutils literal notranslate"><span class="pre">get_counts()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.stackedbars_many_7.gettimes"><code class="docutils literal notranslate"><span class="pre">gettimes()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-scripts.stackedbars_many_8">scripts.stackedbars_many_8 module</a><ul>
+<li><a class="reference internal" href="#scripts.stackedbars_many_8.get_counts"><code class="docutils literal notranslate"><span class="pre">get_counts()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.stackedbars_many_8.gettimes"><code class="docutils literal notranslate"><span class="pre">gettimes()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-scripts.svar">scripts.svar module</a><ul>
+<li><a class="reference internal" href="#scripts.svar.find_nearest_reachable"><code class="docutils literal notranslate"><span class="pre">find_nearest_reachable()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.svar.hamming_neighbors"><code class="docutils literal notranslate"><span class="pre">hamming_neighbors()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.svar.timeout"><code class="docutils literal notranslate"><span class="pre">timeout()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.svar.wrapgen"><code class="docutils literal notranslate"><span class="pre">wrapgen()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.svar.wrapper"><code class="docutils literal notranslate"><span class="pre">wrapper()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scripts-test-graph-shape-module">scripts.test_graph_shape module</a></li>
+<li><a class="reference internal" href="#scripts-test-graph-shapes-module">scripts.test_graph_shapes module</a></li>
+<li><a class="reference internal" href="#scripts-validation-module">scripts.validation module</a></li>
+<li><a class="reference internal" href="#scripts-violin-plot-module">scripts.violin_plot module</a></li>
+<li><a class="reference internal" href="#module-scripts">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/scripts/furo.js"></script>
+    </body>
+</html>
